@@ -42,7 +42,7 @@ public class ActivityGame extends AppCompatActivity implements View.OnClickListe
                 Document document =  Jsoup.connect("https://dr.dk").get();
                 String []words = document.text().toLowerCase().replaceAll("[^a-zæøå ]","").split(" ");
                 synchronized (wordList){
-                    for(int i=0; 2 > i; i++){
+                    for(int i=0; words.length > i; i++){
                         if(words[i].length() > 1 ){
                             wordList.add(words[i]);
                             System.out.println(words[i]);
@@ -83,7 +83,7 @@ public class ActivityGame extends AppCompatActivity implements View.OnClickListe
         String playerName = intent.getStringExtra("playerName");
         TXT_playerName.setText(playerName);
         btnRunTurn.setOnClickListener(this);
-
+        TXT_word.setText(cunciledWord);
     }
 
     private void launchActivity(boolean condition,String Word, int attemps,String playerName) {
